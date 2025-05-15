@@ -59,21 +59,9 @@ def validate_time() -> tuple[int, int]:
             print("\033[91m❌ Invalid time format. Use HH, MM format (example: 13, 30)\033[0m")
     return time
 
-# def validate_city() -> str:
-#     condition:bool = True
-#     origin:str = ""
-#     while condition:
-#         origin = " ".join(input("\nEnter the origin city: ").split())
-#         if len(origin) > 25:
-#             print("\033[91m❌ The origin city must not exceed 25 characters.\033[0m")
-#         elif not re.fullmatch(r"[A-Za-zÁÉÍÓÚáéíóúÑñ ]+", origin):
-#             print("\033[93m⚠️ Only letters and spaces are allowed (including accents like á, é, ñ).\033[0m")
-#         else:
-#             condition = False
-#     return origin
-
 def reserve_seats() -> dict:
     condition:bool = True
+    condition_2:bool = True
     while condition:
 
         flight_code:str = validate_code()
@@ -86,42 +74,53 @@ def reserve_seats() -> dict:
                 flights_2[flight_code]['seats'].remove(seat)
                 reserved_seats[flight_code]:list = []
                 reserved_seats[flight_code].append(seat)
-                print(f"\nSeat {seat} reserved for {flight_code} flight.")
+                print(f"\033[92m\nSeat {seat} reserved for {flight_code} flight.\033[0m")
                 condition = False
             else:
                 print(f"\nThe seat {seat} is not available. Please try again.")
 
         else:
             print(f"\nFlight code {flight_code} not found. Please try again.")
+
+    while condition_2:
+        print(f"""\033[93m\nDo you want to reserve more seats? 
+        \r(Press 'y' to reserve more / any other key to return to menu): \033[0m""", end="")
+
+        if input().strip().lower() != "y":
+            condition_2 = False
+        else:
+            reserve_seats()
     return reserved_seats
 
 def calculate_occupancy_percentage_per_flight():
     for flight_code, flight_data in flights.items():
         if flight_code in reserved_seats.keys():
-            print(f"\nFlight {flight_code} occupancy percentage: {len(reserved_seats[flight_code]) / len(flight_data['seats']) * 100:.2f}%")
+            print(f"\033[92m\nFlight {flight_code} occupancy percentage: {len(reserved_seats[flight_code]) / len(flight_data['seats']) * 100:.2f}%\033[0m")
         else:
-            print(f"\nFlight {flight_code} occupancy percentage: 0%")
-
-def continue_or_exit() -> bool:
-    condition:bool = True
-    while condition:
-        option:str = input(f"\033[93m\nPress 'y' to continue / any other key to return to menu): \033[0m").strip().lower()
-        if option != "yes":
-            return False
+            print(f"\033[92m\nFlight {flight_code} occupancy percentage: 0%\033[0m")
 
 def menu() -> str:
     print("\033[96m\n---------- 📊 Reservation Flight System ----------\033[0m")
-    print("""
-1. Reserve seat
-2. Calculate occupancy percentage per flight
-3. Export sorted flights report
-4.🚪 Exit
-    """)
-    option:str = input("👉 Enter the number of the action you want to perform: ")
+    print("""\n1. Reserve seat
+           \r2. Calculate occupancy percentage per flight
+           \r3. Export sorted flights report
+           \r4.🚪 Exit""")
+    option:str = input("\n👉 Enter the number of the action you want to perform: ")
     return option
+
+# def continue_or_exit() -> bool:
+#     condition:bool = True
+#     while 0 <= condition < 5:
+#         option:str = input(f"\033[93m\nPress 'y' to continue / any other key to return to menu): \033[0m").strip().lower()
+#         if option != "yes":
+#             condition = False
+#             menu()
+#         else:
+#             reserve_seats()
 
 def main() -> None:
     condition:bool = True
+    condition_2:bool = True
     while condition:
         option:str = menu()
 
