@@ -105,11 +105,8 @@ def calculate_occupancy_percentage_per_flight():
 def continue_or_exit() -> bool:
     condition:bool = True
     while condition:
-        option:str = input(f"\033[93m\nPress 'y' to continue / any other key to return to menu): \033[0m").lower()
-        if option == "yes":
-            condition = False
-        elif option == "no":
-            condition = False
+        option:str = input(f"\033[93m\nPress 'y' to continue / any other key to return to menu): \033[0m").strip().lower()
+        if option != "yes":
             return False
 
 def menu() -> str:
