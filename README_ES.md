@@ -33,6 +33,14 @@ flight_reservation/
 
 ---
 
+## 🧪 Validación de Entrada
+
+- El **código de vuelo** debe seguir el formato: XX-123.
+- El **asiento** debe seguir el formato: Letra + 1 o 2 dígitos (por ejemplo, A1, D12).
+
+Si se ingresa un formato inválido, el sistema mostrará una advertencia y pedirá que se ingrese nuevamente.
+
+---
 
 ## 🚀 Cómo Ejecutar
 
@@ -141,16 +149,6 @@ Occupancy Rate: 16.67%
 
 Report generated at: 2025-05-16 10:42:31
 ```
-
----
-
-## 🧪 Validación de Entrada
-
-- El código de vuelo debe seguir el formato: XX-123
-
-- El asiento debe seguir el formato: Letra + 1 o 2 dígitos (por ejemplo, A1, D12)
-
-Si se ingresa un formato inválido, el sistema mostrará una advertencia y pedirá que se ingrese nuevamente.
 
 ---
 
