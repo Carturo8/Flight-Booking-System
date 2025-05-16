@@ -152,7 +152,7 @@ def generate_flight_schedule_report() -> None:
 
     try:
         # Open the output file in writing mode using UTF-8 encoding
-        with open('flight_schedule_report.txt', 'w', encoding='utf-8') as file:
+        with open('flight_schedule_report_example.txt', 'w', encoding='utf-8') as file:
             file.write("FLIGHT SCHEDULE REPORT\n")
             file.write("=" * 50 + "\n\n")
 
