@@ -44,13 +44,28 @@ Si se ingresa un formato inválido, el sistema mostrará una advertencia y pedir
 
 ## 🚀 Cómo Ejecutar
 
-1. Asegúrate de tener instalado **Python 3**.  
-2. Clona este repositorio o descarga el script.  
+1. Asegúrate de tener instalado **Python 3.12** o una versión posterior.
+
+2. Clona este repositorio o descarga el script:
+
+   - Usando Git:
+     ```bash
+     git clone https://github.com/your-username/flight-reservation-system.git
+     cd flight-reservation-system
+     ```
+
+   - O descarga el archivo ZIP:
+
+     1. Haz clic en el botón verde "Code" en la parte superior
+     2. Selecciona "Download ZIP"
+     3. Extrae el archivo descargado
+     4. Navega hasta la carpeta extraída
+ 
 3. Ejecuta el script principal:
 
-```bash
-python flight_reservation_system.py
-```
+    ```bash
+    python flight_reservation_system.py
+    ```
 
 ---
 
