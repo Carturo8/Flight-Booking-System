@@ -18,8 +18,8 @@ Este es un sencillo **Sistema de Reservas de Vuelos** basado en la terminal y es
 
 ```bash
 flight_reservation/
-├── flight_reservation.py # Main script
-└── flight_schedule_report_example.txt # Auto-generated report file
+├── flight_reservation.py # Script principal
+└── flight_schedule_report_example.txt # Archivo de reporte autogenerado
 ```
 
 ---
