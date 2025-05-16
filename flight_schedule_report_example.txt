@@ -21,9 +21,9 @@ Flight Code: AV-408
 Departure Time: 21:30
 Origin: Tokyo
 Destination: Seoul
-Available Seats: 6
-Occupancy Rate: 0.00%
+Available Seats: 4
+Occupancy Rate: 33.33%
 --------------------------------------------------
 
 
-Report generated at: 2025-05-15 21:33:31
+Report generated at: 2025-05-15 21:53:40
