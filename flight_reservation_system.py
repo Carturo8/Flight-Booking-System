@@ -27,140 +27,156 @@ reserved_seats:dict = {}
 
 
 def validate_code() -> str:
+    """
+    Prompts the user to enter a flight code in the format XX-###.
+
+    The code must consist of two uppercase letters, a dash, and three digits (e.g., AV-123).
+    The input is automatically converted to uppercase to ensure it matches the pattern.
+
+    Returns:
+        str: A valid flight code that matches the required format.
+    """
     pattern:str = r"^[A-Z]{2}-[0-9]{3}$"
     while True:
-        code:str = input("\nEnter the flight code (format: XX-###): ")
+        code:str = input("\nEnter the flight code (format: XX-###): ").upper()
         if re.match(pattern, code):
             return code
-        print("\033[93m⚠️ Invalid format. Use two uppercase letters, dash, and three numbers (e.g., AV-123)\033[0m")
+        print("\033[93m⚠️ Invalid format. Please enter two letters, a dash, and three digits (e.g., AV-123).\033[0m")
 
 
 def validate_seat() -> str:
-    condition:bool = True
-    seat:str = ""
-    while condition:
-        seat = input(f"\nEnter the seat you wish to reserve (e.g., A1 or D2): ")
-        if not re.match(r"^[A-Z][0-9]$", seat):
-            print("\033[93m⚠️ A uppercase letter followed by a number must be entered.\033[0m")
-        else:
-            condition = False
-    return seat
+    """
+    Prompts the user to enter a seat identifier in the format Letter+Number (e.g., A1 or D12).
 
+    The input is automatically converted to uppercase and validated using a regex pattern.
 
-def validate_seat() -> str:
-    pattern:str = r"^[A-Z][0-9]$"
+    Returns:
+        str: A valid seat identifier.
+    """
+    pattern:str = r"^[A-Z][0-9]{1,2}$"  # Seat must start with a letter followed by 1 or 2 digits (e.g., A1, D12)
     while True:
         seat:str = input("\nEnter the seat you wish to reserve (e.g., A1 or D12): ").strip().upper()
-        if not seat_pattern.match(seat):
-            print("\033[93m⚠️ You must enter an uppercase letter followed by a single number (e.g., A1).\033[0m")
-        else:
+        if re.match(pattern, seat):
             return seat
-
-
-def validate_time() -> tuple[int, int]:
-    condition:bool = True
-    time:tuple[int, int] = (0, 0)
-    while condition:
-        try:
-            time_str:str = (input("\nEnter flight time (HH(0-23), MM(0-59) format): "))
-            time_dt:datetime = datetime.datetime.strptime(time_str, "%H, %M")
-            time = (time_dt.hour, time_dt.minute)
-            condition = False
-        except ValueError:
-            print("\033[91m❌ Invalid time format. Use HH, MM format (example: 13, 30)\033[0m")
-    return time
+        else:
+            print("\033[93m⚠️ Invalid format. Use a letter followed by one or two digits (e.g., A1 or D12).\033[0m")
 
 
 def reserve_seats() -> None:
+    """
+    Handles the seat reservation process for a selected flight.
+
+    The user is prompted to enter a valid flight code and then select an available seat.
+    Reserved seats are stored in a dictionary, and the flight's available seat list is updated accordingly.
+    """
     while True:  # Main loop for multiple reservations
         flight_code:str = validate_code()
 
-        if flight_code not in flights.keys():
-            print(f"\033[93m⚠️ Flight code {flight_code} not found. Please try again.\033[0m")
+        if flight_code not in flights:
+            print(f"\033[93m⚠️ Flight code '{flight_code}' not found. Please try again.\033[0m")
             continue
 
-        # Loop to handle seat reservation for the selected flight
+        # Sub-loop to handle seat reservation for the selected flight
         while True:
-            print(f"\033[96m\nThe available seats for {flight_code} are: {', '.join(flights_copy[flight_code]['seats'])}\033[0m")
+            print(f"\033[96m\nAvailable seats for flight {flight_code}: {', '.join(flights_copy[flight_code]['seats'])}\033[0m")
             seat:str = validate_seat()
 
             if seat not in flights_copy[flight_code]['seats']:
-                print(f"\033[91m❌ The seat {seat} is not available. Please try again.\033[0m")
+                print(f"\033[91m❌ Seat {seat} is not available. Please try a different one.\033[0m")
                 continue
 
-            # Reserve the seat
+            # Remove the reserved seat from the copy
             flights_copy[flight_code]['seats'].remove(seat)
 
-            # Initialize the list if it's the first seat for this flight
+            # Initialize the seat list if first reservation for this flight
             if flight_code not in reserved_seats:
-                reserved_seats[flight_code]:list = []
+                reserved_seats[flight_code]: list = []
 
             reserved_seats[flight_code].append(seat)
-            print(f"\033[92m\nSeat {seat} reserved for {flight_code} flight.\033[0m")
-            break  # Exit seat selection loop
+            print(f"\033[92m✅ Seat {seat} has been successfully reserved for flight {flight_code}.\033[0m")
+            break  # Exit inner seat reservation loop
 
-        # Ask if a user wants to reserve more seats
-        print(f"\033[93m\nDo you want to reserve another seat? (y/n): \033[0m", end="")
+        # Ask a user if they want to make another reservation
+        print(f"\033[93m\nWould you like to reserve another seat? (y/n): \033[0m", end="")
         if input().strip().lower() != 'y':
             break
 
 
 def calculate_occupancy_percentage_per_flight() -> None:
-    for flight_code, flight_data in flights.items():  # Use original flights dict for total seats count
+    """
+    Calculates and displays the seat occupancy percentage for each flight.
+
+    For every flight in the system, this function compares the number of reserved seats
+    with the total number of seats to calculate the occupancy rate.
+    The results are printed to the console.
+    """
+    for flight_code, flight_data in flights.items():  # Use the original dict to get the total seat count
         total_seats:int = len(flight_data['seats'])
         occupied_seats:int = 0
 
-        # Check if there are any reserved seats for this flight
+        # Check if any seats have been reserved for this flight
         if flight_code in reserved_seats:
             occupied_seats:int = len(reserved_seats[flight_code])
 
-        # Calculate the occupancy percentage
+        # Calculate the percentage of seats that are occupied
         occupancy_percentage:float = (occupied_seats / total_seats) * 100
 
+        # Display the occupancy information
         print(f"\033[96m\nFlight {flight_code}:\033[0m")
         print(f"""\033[92mTotal seats: {total_seats} 
         \rOccupied seats: {occupied_seats} 
-        \rOccupancy percentage: {occupancy_percentage:.2f}%\033[0m""")
+        \rOccupancy rate: {occupancy_percentage:.2f}%\033[0m""")
 
 
-def generate_flight_schedule_report():
-    # Sort flights by departure time
-    sorted_flights = dict(sorted(flights.items(),
-                                 key = lambda x: x[1]['time']))
+def generate_flight_schedule_report() -> None:
+    """
+    Generates a text report with flight information sorted by departure time.
+
+    The report includes:
+    - Flight code
+    - Departure time
+    - Origin and destination
+    - Number of available seats
+    - Occupancy rate
+
+    The report is saved as 'flight_schedule_report.txt' in UTF-8 encoding.
+    """
+    # Sort flights by departure time (hour, minute)
+    sorted_flights = dict(sorted(flights.items(), key=lambda x: x[1]['time']))
 
     try:
-        # Open a file in writing mode with UTF-8 encoding
-        with open('flight_schedule_report.txt', 'w', encoding = 'utf-8') as file:
+        # Open the output file in writing mode using UTF-8 encoding
+        with open('flight_schedule_report.txt', 'w', encoding='utf-8') as file:
             file.write("FLIGHT SCHEDULE REPORT\n")
             file.write("=" * 50 + "\n\n")
 
             for flight_code, flight_data in sorted_flights.items():
-                # Calculate occupancy for this flight
+                # Calculate total and reserved seats for the flight
                 total_seats = len(flight_data['seats'])
                 occupied_seats = len(reserved_seats.get(flight_code, []))
                 occupancy_percentage = (occupied_seats / total_seats) * 100
 
-                # Write flight information
+                # Write all flight information into the report
                 file.write(f"Flight Code: {flight_code}\n")
                 file.write(f"Departure Time: {flight_data['time'][0]:02d}:{flight_data['time'][1]:02d}\n")
                 file.write(f"Origin: {flight_data['origin']}\n")
                 file.write(f"Destination: {flight_data['destination']}\n")
                 file.write(f"Available Seats: {len(flights_copy[flight_code]['seats'])}\n")
-                file.write(f"Occupancy: {occupancy_percentage:.2f}%\n")
+                file.write(f"Occupancy Rate: {occupancy_percentage:.2f}%\n")
                 file.write("-" * 50 + "\n\n")
 
-            file.write("\nReport generated at: " +
-                       datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            # Add a timestamp at the end of the report
+            file.write("\nReport generated at: " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-        print("\033[92m✅ Flight schedule report has been generated successfully!\033[0m")
+        print("\033[92m\n✅ Flight schedule report has been generated successfully!\033[0m")
 
     except Exception as e:
         print(f"\033[91m❌ Error generating report: {str(e)}\033[0m")
 
 
 def menu() -> str:
-    print("\033[96m\n---------- 📊 Reservation Flight System ----------\033[0m")
-    print("""\n1. Reserve seat
+    print("\033[96m\n---------- 📊 Reservation Flight System ----------\033[0m\n")
+    print("""1. Reserve seat
            \r2. Calculate occupancy percentage per flight
            \r3. Export sorted flights report
            \r4.🚪 Exit""")
@@ -169,45 +185,34 @@ def menu() -> str:
 
 
 def main() -> None:
-    condition:bool = True
-    while condition:
-        option:str = menu()
+    running:bool = True
+    while running:
+        try:
+            option:str = menu()
 
-        if option == "1":
-            print("\033[96m\n -------------------- RESERVE SEAT --------------------\033[0m")
-            reserve_seats()
+            if option == "1":
+                print("\033[96m\n -------------------- RESERVE SEAT --------------------\033[0m")
+                reserve_seats()
 
-        elif option == "2":
-            print("\033[96m\n ----------------- CALCULATE OCCUPANCY PERCENTAGE ------------------\033[0m")
-            calculate_occupancy_percentage_per_flight()
+            elif option == "2":
+                print("\033[96m\n ----------- CALCULATE OCCUPANCY PERCENTAGE ------------\033[0m")
+                calculate_occupancy_percentage_per_flight()
 
-        elif option == "3":
-            print("\033[96m\n ------------------ EXPORT SORTED FLIGHTS REPORT -------------------\033[0m")
-            generate_flight_schedule_report()
+            elif option == "3":
+                print("\033[96m\n ------------- EXPORT SORTED FLIGHTS REPORT ------------\033[0m")
+                generate_flight_schedule_report()
 
-        elif option == "4":
-            condition = False
-            print("\033[92m\n👋 Thank you for using the Reservation Flight System. Goodbye!\033[0m")
-        else:
-            print("\033[91m\n❌ Invalid option. Please enter a number between 1 and 4.\033[0m")
+            elif option == "4":
+                running = False
+                print("\033[92m\n👋 Thank you for using the Reservation Flight System. Goodbye!\033[0m")
+
+            else:
+                print("\033[91m\n❌ Invalid option. Please enter a number between 1 and 4.\033[0m")
+
+        except KeyboardInterrupt:
+            print("\n\033[91m\n❌ Program interrupted. Exiting...\033[0m")
+            running = False
 
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
