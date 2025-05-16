@@ -154,15 +154,11 @@ Report generated at: 2025-05-16 10:42:31
 
 ## 🛠️ Tecnologías Utilizadas
 
-- Python 3
-
+- Python 3.
 - Librerías Estándar:
-
-  - `copy` para integridad de datos
-
-  - `re` para validación de entrada basada en expresiones regulares
-
-  - `datetime` para la marca de tiempo en los reportes
+  - `copy` para integridad de datos.
+  - `re` para validación de entrada basada en expresiones regulares.
+  - `datetime` para la marca de tiempo en los reportes.
 
 ---
 
