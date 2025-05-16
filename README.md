@@ -40,7 +40,7 @@ flight_reservation/
 3. Run the main script:
 
 ```bash
-python flight_reservation.py
+python flight_reservation_system.py
 ```
 
 ---
@@ -51,12 +51,11 @@ python flight_reservation.py
 
 The system starts with three preloaded flights:
 
-```bash
-Flight Code	Origin	Destination	Departure Time	Seats
-AV-201	London	Paris	09:45	A1, A2, B1, B2, C1, C2
-AV-305	New York	Miami	14:15	A1, A2, B1, B2, E1, E2
-AV-408	Tokyo	Seoul	21:30	A1, A2, B1, B2, D1, D2
-```
+| Flight Code | Origin   | Destination | Departure Time | Seats               |
+|-------------|----------|-------------|----------------|---------------------|
+| AV-201      | London   | Paris       | 09:45          | A1, A2, B1, B2, C1, C2 |
+| AV-305      | New York | Miami       | 14:15          | A1, A2, B1, B2, E1, E2 |
+| AV-408      | Tokyo    | Seoul       | 21:30          | A1, A2, B1, B2, D1, D2 |
 
 ### 📋 Sample Menu
 
