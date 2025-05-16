@@ -33,6 +33,16 @@ flight_reservation/
 
 ---
 
+## 🧪 Input Validation
+
+- Flight Code must follow the format: XX-123
+
+- Seat must follow the format: Letter + 1 or 2 digits (e.g., A1, D12)
+
+If an invalid format is entered, the system will show a warning and ask again.
+
+---
+
 ## 🚀 How to Run
 
 1. Make sure you have **Python 3** installed.
@@ -140,16 +150,6 @@ Occupancy Rate: 16.67%
 
 Report generated at: 2025-05-16 10:42:31
 ```
-
----
-
-## 🧪 Input Validation
-
-- Flight Code must follow the format: XX-123
-
-- Seat must follow the format: Letter + 1 or 2 digits (e.g., A1, D12)
-
-If an invalid format is entered, the system will show a warning and ask again.
 
 ---
 
