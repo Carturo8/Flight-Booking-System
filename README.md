@@ -44,14 +44,29 @@ If an invalid format is entered, the system will show a warning and ask again.
 
 ## 🚀 How to Run
 
-1. Make sure you have **Python 3** installed.
-2. Clone this repository or download the script.
+1. Make sure you have **Python 3.12** or later installed.
+   
+2. Clone this repository or download the script:
+
+   - Using Git:
+     ```bash
+     git clone https://github.com/your-username/flight-reservation-system.git
+     cd flight-reservation-system
+     ```
+
+   - Or download the ZIP file:
+     
+     1. Click on the green "Code" button above
+     2. Select "Download ZIP"
+     3. Extract the downloaded file
+     4. Navigate to the extracted folder
+ 
 3. Run the main script:
 
-```bash
-python flight_reservation_system.py
-```
-
+    ```bash
+    python flight_reservation_system.py
+    ```
+    
 ---
 
 ## 💡 Usage Examples
