@@ -96,7 +96,7 @@ def reserve_seats() -> None:
 
             # Initialize the seat list if first reservation for this flight
             if flight_code not in reserved_seats:
-                reserved_seats[flight_code]: list = []
+                reserved_seats[flight_code]:list = []
 
             reserved_seats[flight_code].append(seat)
             print(f"\033[92m✅ Seat {seat} has been successfully reserved for flight {flight_code}.\033[0m")
@@ -148,19 +148,19 @@ def generate_flight_schedule_report() -> None:
     The report is saved as 'flight_schedule_report.txt' in UTF-8 encoding.
     """
     # Sort flights by departure time (hour, minute)
-    sorted_flights = dict(sorted(flights.items(), key=lambda x: x[1]['time']))
+    sorted_flights:dict = dict(sorted(flights.items(), key = lambda x: x[1]['time']))
 
     try:
         # Open the output file in writing mode using UTF-8 encoding
-        with open('flight_schedule_report_example.txt', 'w', encoding='utf-8') as file:
+        with open('flight_schedule_report_example.txt', 'w', encoding = 'utf-8') as file:
             file.write("FLIGHT SCHEDULE REPORT\n")
             file.write("=" * 50 + "\n\n")
 
             for flight_code, flight_data in sorted_flights.items():
                 # Calculate total and reserved seats for the flight
-                total_seats = len(flight_data['seats'])
-                occupied_seats = len(reserved_seats.get(flight_code, []))
-                occupancy_percentage = (occupied_seats / total_seats) * 100
+                total_seats:int = len(flight_data['seats'])
+                occupied_seats:int = len(reserved_seats.get(flight_code, []))
+                occupancy_percentage:float = (occupied_seats / total_seats) * 100
 
                 # Write all flight information into the report
                 file.write(f"Flight Code: {flight_code}\n")
@@ -203,7 +203,7 @@ def main() -> None:
     Main function that runs the flight reservation system.
     Handles user interaction through a menu and executes the selected action.
     """
-    running: bool = True
+    running:bool = True
     while running:
         try:
             option:str = menu()
