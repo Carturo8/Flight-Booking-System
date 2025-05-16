@@ -124,7 +124,7 @@ Occupancy rate: 0.00%
 ✅ Flight schedule report has been generated successfully!
 ```
 
-El archivo flight_schedule_report_example.txt será creado con información detallada y ordenada de los vuelos, como:
+El archivo `flight_schedule_report_example.txt` será creado con información detallada y ordenada de los vuelos, como:
 
 ```bash
 FLIGHT SCHEDULE REPORT
@@ -160,11 +160,11 @@ Si se ingresa un formato inválido, el sistema mostrará una advertencia y pedir
 
 - Librerías Estándar:
 
-  - copy para integridad de datos
+  - `copy` para integridad de datos
 
-  - re para validación de entrada basada en expresiones regulares
+  - `re` para validación de entrada basada en expresiones regulares
 
-  - datetime para la marca de tiempo en los reportes
+  - `datetime` para la marca de tiempo en los reportes
 
 ---
 
