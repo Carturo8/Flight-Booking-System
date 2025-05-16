@@ -187,7 +187,7 @@ def menu() -> str:
     Returns:
         str: The selected option as a string.
     """
-    print("\033[96m\n---------- 📊 Flight Reservation System ----------\033[0m\n")
+    print("\033[96m\n---------- ✈️ Flight Reservation System ----------\033[0m\n")
     print("""1. Reserve a seat
            \r2. Calculate occupancy percentage per flight
            \r3. Export sorted flights report
