@@ -73,7 +73,7 @@ def reserve_seats() -> None:
         flight_code:str = validate_code()
 
         if flight_code not in flights:
-            print(f"\033[93m⚠️ Flight code '{flight_code}' not found. Please try again.\033[0m")
+            print(f"\033[91m❌ Flight code '{flight_code}' not found. Please try again.\033[0m")
             continue
 
         # Sub-loop to handle seat reservation for the selected flight
@@ -175,44 +175,60 @@ def generate_flight_schedule_report() -> None:
 
 
 def menu() -> str:
-    print("\033[96m\n---------- 📊 Reservation Flight System ----------\033[0m\n")
-    print("""1. Reserve seat
+    """
+    Displays the main menu and prompts the user to select an option.
+
+    Returns:
+        str: The selected option as a string.
+    """
+    print("\033[96m\n---------- 📊 Flight Reservation System ----------\033[0m\n")
+    print("""1. Reserve a seat
            \r2. Calculate occupancy percentage per flight
            \r3. Export sorted flights report
            \r4.🚪 Exit""")
+
+    # Prompt the user to select a menu option
     option:str = input("\n👉 Enter the number of the action you want to perform: ")
     return option
 
 
 def main() -> None:
-    running:bool = True
+    """
+    Main function that runs the flight reservation system.
+    Handles user interaction through a menu and executes the selected action.
+    """
+    running: bool = True
     while running:
         try:
             option:str = menu()
 
             if option == "1":
-                print("\033[96m\n -------------------- RESERVE SEAT --------------------\033[0m")
+                print("\033[96m\n -------------------- RESERVE A SEAT --------------------\033[0m")
                 reserve_seats()
 
             elif option == "2":
-                print("\033[96m\n ----------- CALCULATE OCCUPANCY PERCENTAGE ------------\033[0m")
+                print("\033[96m\n -------- CALCULATE OCCUPANCY PERCENTAGE --------\033[0m")
                 calculate_occupancy_percentage_per_flight()
 
             elif option == "3":
-                print("\033[96m\n ------------- EXPORT SORTED FLIGHTS REPORT ------------\033[0m")
+                print("\033[96m\n --------- EXPORT SORTED FLIGHTS REPORT ---------\033[0m")
                 generate_flight_schedule_report()
 
             elif option == "4":
+                # Exit the program
                 running = False
-                print("\033[92m\n👋 Thank you for using the Reservation Flight System. Goodbye!\033[0m")
+                print("\033[92m\n👋 Thank you for using the Flight Reservation System. Goodbye!\033[0m")
 
             else:
+                # Invalid option entered by the user
                 print("\033[91m\n❌ Invalid option. Please enter a number between 1 and 4.\033[0m")
 
         except KeyboardInterrupt:
+            # Handles user interruption (Ctrl+C)
             print("\n\033[91m\n❌ Program interrupted. Exiting...\033[0m")
             running = False
 
 
+# Run the main function only if this script is executed directly (not imported as a module)
 if __name__ == "__main__":
     main()
