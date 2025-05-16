@@ -1,7 +1,9 @@
-import copy
-import re
-import datetime
+# Import the necessary standard libraries
+import copy    # To create deep copies of complex data structures
+import re      # For regular expression operations (input validation)
+import datetime  # For handling date and time, used in report generation
 
+# Dictionary containing flight data with details such as origin, destination, available seats, and departure time
 flights:dict = {
     "AV-201": {
         "origin": "London",
@@ -22,7 +24,11 @@ flights:dict = {
         "time": (21, 30)
     }
 }
-flights_copy = copy.deepcopy(flights)
+
+# Deep copy of flight dictionary to keep track of available seats without altering original data
+flights_copy:dict = copy.deepcopy(flights)
+
+# Dictionary to store reserved seats per flight (keys are flight codes, values are lists of reserved seat IDs)
 reserved_seats:dict = {}
 
 
