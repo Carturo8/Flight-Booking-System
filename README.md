@@ -154,15 +154,11 @@ Report generated at: 2025-05-16 10:42:31
 
 ## 🛠️ Technologies Used
 
-- Python 3
-
+- Python 3.
 - Standard Libraries:
-
-  - `copy` for data integrity
-
-  - `re` for regex-based input validation
-
-  - `datetime` for timestamping reports
+  - `copy` for data integrity.
+  - `re` for regex-based input validation.
+  - `datetime` for timestamping reports.
 
 ---
 
