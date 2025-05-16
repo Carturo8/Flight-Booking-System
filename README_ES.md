@@ -71,7 +71,7 @@ El sistema inicia con tres vuelos precargados:
 Cuando ejecutes el script, verás el menú principal:
 
 ```bash
----------- 📊 Flight Reservation System ----------
+---------- ✈️ Flight Reservation System ----------
 
 1. Reserve a seat
 2. Calculate occupancy percentage per flight
