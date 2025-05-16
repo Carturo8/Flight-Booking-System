@@ -36,7 +36,7 @@ flight_reservation/
 ## 🧪 Input Validation
 
 - **Flight Code** must follow the format: `XX-123`.
-- **Seat** must follow the format: Letter + 1 or 2 digits (e.g., A1, D12).
+- **Seat** must follow the format: Letter + 1 or 2 digits (e.g., `A1`, `D12`).
 
 If an invalid format is entered, the system will show a warning and ask again.
 
