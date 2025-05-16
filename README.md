@@ -7,6 +7,8 @@ This is a simple terminal-based **Flight Reservation System** written in Python.
 - Export a sorted report with flight schedules and availability.
 - Interact via a friendly text-based menu.
 
+---
+
 ## 📁 Project Structure
 
 ```bash
