@@ -1,7 +1,4 @@
 # ✈️ Flight Reservation System
-
----
-
 This is a simple terminal-based **Flight Reservation System** written in Python. It allows users to:
 
 - Reserve available seats on predefined flights.
