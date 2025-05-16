@@ -169,4 +169,4 @@ If an invalid format is entered, the system will show a warning and ask again.
 
 ## 📜 License
 
-This project is open-source and free to use for educational and personal purposes.
+This project is licensed under the [MIT License](https://github.com/Carturo8/Flight-Reservation-System/blob/main/LICENSE).
