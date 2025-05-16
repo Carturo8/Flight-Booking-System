@@ -1,7 +1,7 @@
 # ✈️ Flight Reservation System
 
 ### Versión en español
-[Haz clic aquí para ver el README en español](https://github.com/Carturo8/Inventory-Management/blob/main/README_ES.md)
+[Haz clic aquí para ver el README en español](https://github.com/Carturo8/Flight-Reservation-System/blob/main/README_ES.md)
 
 This is a simple terminal-based **Flight Reservation System** written in Python. It allows users to:
 
