@@ -123,7 +123,7 @@ Occupancy rate: 0.00%
 ✅ Flight schedule report has been generated successfully!
 ```
 
-The file flight_schedule_report_example.txt will be created with detailed, sorted flight information, like:
+The file `flight_schedule_report_example.txt` will be created with detailed, sorted flight information, like:
 
 ```bash
 FLIGHT SCHEDULE REPORT
@@ -159,11 +159,11 @@ If an invalid format is entered, the system will show a warning and ask again.
 
 - Standard Libraries:
 
-  - copy for data integrity
+  - `copy` for data integrity
 
-  - re for regex-based input validation
+  - `re` for regex-based input validation
 
-  - datetime for timestamping reports
+  - `datetime` for timestamping reports
 
 ---
 
