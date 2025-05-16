@@ -9,9 +9,11 @@ This is a simple terminal-based **Flight Reservation System** written in Python.
 
 ## 📁 Project Structure
 
+```bash
 flight_reservation/
 ├── flight_reservation.py # Main script
 └── flight_schedule_report_example.txt # Auto-generated report file
+```
 
 ---
 
