@@ -1,0 +1,29 @@
+FLIGHT SCHEDULE REPORT
+==================================================
+
+Flight Code: AV-201
+Departure Time: 09:45
+Origin: London
+Destination: Paris
+Available Seats: 3
+Occupancy Rate: 50.00%
+--------------------------------------------------
+
+Flight Code: AV-305
+Departure Time: 14:15
+Origin: New York
+Destination: Miami
+Available Seats: 5
+Occupancy Rate: 16.67%
+--------------------------------------------------
+
+Flight Code: AV-408
+Departure Time: 21:30
+Origin: Tokyo
+Destination: Seoul
+Available Seats: 6
+Occupancy Rate: 0.00%
+--------------------------------------------------
+
+
+Report generated at: 2025-05-15 21:33:31
