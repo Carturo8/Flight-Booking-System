@@ -71,7 +71,7 @@ The system starts with three preloaded flights:
 Once the script runs, you'll see the main menu:
 
 ```bash
----------- 📊 Flight Reservation System ----------
+---------- ✈️ Flight Reservation System ----------
 
 1. Reserve a seat
 2. Calculate occupancy percentage per flight
