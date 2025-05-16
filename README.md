@@ -3,6 +3,8 @@
 ### Versión en español
 [Haz clic aquí para ver el README en español](https://github.com/Carturo8/Flight-Reservation-System/blob/main/README_ES.md)
 
+---
+
 This is a simple terminal-based **Flight Reservation System** written in Python. It allows users to:
 
 - Reserve available seats on predefined flights.
@@ -41,7 +43,22 @@ flight_reservation/
 python flight_reservation.py
 ```
 
-## 📋 Sample Menu
+---
+
+## 💡 Usage Examples
+
+### ✈️ Available Flights
+
+The system starts with three preloaded flights:
+
+```bash
+Flight Code	Origin	Destination	Departure Time	Seats
+AV-201	London	Paris	09:45	A1, A2, B1, B2, C1, C2
+AV-305	New York	Miami	14:15	A1, A2, B1, B2, E1, E2
+AV-408	Tokyo	Seoul	21:30	A1, A2, B1, B2, D1, D2
+```
+
+### 📋 Sample Menu
 
 Once the script runs, you'll see the main menu:
 
@@ -55,17 +72,6 @@ Once the script runs, you'll see the main menu:
 
 👉 Enter the number of the action you want to perform:
 ```
-
-## ✈️ Available Flights
-
-The system starts with three preloaded flights:
-
-Flight Code	Origin	Destination	Departure Time	Seats
-AV-201	London	Paris	09:45	A1, A2, B1, B2, C1, C2
-AV-305	New York	Miami	14:15	A1, A2, B1, B2, E1, E2
-AV-408	Tokyo	Seoul	21:30	A1, A2, B1, B2, D1, D2
-
-## 💡 Usage Examples
 
 ### ✅ Reserve a Seat
 
@@ -136,6 +142,8 @@ Occupancy Rate: 16.67%
 Report generated at: 2025-05-16 10:42:31
 ```
 
+---
+
 ## 🧪 Input Validation
 
 - Flight Code must follow the format: XX-123
@@ -144,7 +152,9 @@ Report generated at: 2025-05-16 10:42:31
 
 If an invalid format is entered, the system will show a warning and ask again.
 
-3# 🛠️ Technologies Used
+---
+
+## 🛠️ Technologies Used
 
 - Python 3
 
@@ -155,6 +165,8 @@ If an invalid format is entered, the system will show a warning and ask again.
   - re for regex-based input validation
 
   - datetime for timestamping reports
+
+---
 
 ## 📜 License
 
